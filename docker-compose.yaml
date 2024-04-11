@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  fastapi_service:
+    build:
+      context: .
+      dockerfile: ./fastapi_service/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file: ./fastapi_service/.env  # Path to FastAPI's .env file
+    depends_on:
+      - postgres
+
+  nodejs_service:
+    build:
+      context: .
+      dockerfile: ./nodejs_service/Dockerfile
+    ports:
+      - "3001:3001"
+    env_file: ./nodejs_service/.env   # Path to Node.js's .env file
+    depends_on:
+      - postgres
+
+  java_service:
+    build:
+      context: ./java-service
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+      
+
+  postgres:
+    image: postgres:14
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}  # Database name
+      - POSTGRES_USER=${POSTGRES_USER} # Database username
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD} # Database password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data1:/var/lib/postgresql/data
+
+networks:
+  default:
+    name: ecommerce-network
+
+volumes:
+  postgres_data1:

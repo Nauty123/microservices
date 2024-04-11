@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-deployment
+  labels:
+    app: nodejs
+spec:
+  replicas: 2  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+        - name: nodejs
+          image: testify876/microservices-ecommerce-nodejs_service  # Replace with your actual image
+          ports:
+            - containerPort: 3001
+          envFrom:
+            - secretRef:
+                name: app-secrets  
+          resources:
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+
+      imagePullSecrets:
+      - name: regcred

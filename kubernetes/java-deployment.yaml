@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-deployment
+  labels:
+    app: java
+spec:
+  replicas: 2  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: java
+  template:
+    metadata:
+      labels:
+        app: java
+    spec:
+      containers:
+        - name: java
+          image: testify876/microservices-ecommerce-java_service:latest2  # Replace with your actual image
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: app-secrets  
+          resources:
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+
+      imagePullSecrets:
+      - name: regcred

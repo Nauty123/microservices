@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Order Report</title>
+</head>
+
+<body>
+    <h1>Order Report</h1>
+    <p>User ID: <span th:text="${report.userId}"></span></p>
+    <p>Report Date: <span th:text="${report.reportDate}"></span></p>
+    <pre th:text="${report.reportData}"></pre>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+# Ignore Python bytecode files
+*.pyc
+
+# Ignore virtual environment directories (if using virtualenv)
+.venv/
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore npm debug log
+npm-debug.log
+
+# Ignore any build artifacts or cached files
+__pycache__/
+*.log
+
+# Ignore any java artifacts or cached files
+# Ignore IntelliJ IDEA files
+.idea/
+# Ignore Visual Studio Code files
+.vscode/

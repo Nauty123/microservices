@@ -1,0 +1,10 @@
+com\example\MyMicroserviceApplication.class
+com\example\repository\OrderReportRepository.class
+com\example\controller\ReportController.class
+com\example\config\RestTemplateConfig.class
+com\example\controller\OrderController.class
+com\example\model\OrderItem.class
+com\example\model\OrderReport.class
+com\example\model\Order.class
+com\example\config\DatabaseConfig.class
+com\example\service\OrderService.class
